@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUROAPRENDE</title>
+    <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="reading-ruler" id="ruler"></div>
+
+    <div class="container">
+        <h1>NEUROAPRENDE</h1>
+        
+        <div class="toolbar">
+            <button onclick="setTheme('light')">☀️ Tema Claro</button>
+            <button onclick="setTheme('dark')">🌙 Tema Escuro</button>
+            <button onclick="setTheme('sepia')">📜 Tema Sépia</button>
+        </div>
+
+        <label for="inputText"><strong>Cole o texto complexo aqui:</strong></label>
+        <textarea id="inputText" placeholder="Insira o texto para simplificar..."></textarea>
+
+        <button class="btn-principal" id="btnProcessar">Simplificar Texto</button>
+
+        <label><strong>Resultado:</strong></label>
+        <div class="output-box" id="outputText">
+            Aguardando texto...
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
