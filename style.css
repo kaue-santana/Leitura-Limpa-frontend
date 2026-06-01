@@ -15,6 +15,11 @@ body.dyslexic-font {
     --ruler-color: rgba(255, 255, 0, 0.3);
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* Variáveis do Tema Escuro */
 body.dark-theme {
     --bg-color: #121212;
