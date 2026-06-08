@@ -6,38 +6,50 @@ body.dyslexic-font {
 
 /* Variáveis de Tema Padrão (Light) */
 :root {
-    --bg-color: #f0f0f2;
-    --text-color: #333333;
-    --container-bg: #fbfbfb;
-    --primary-color: #4a90e2;
+    --bg-color: #f0f4f8;
+    --text-color: #2d3748;
+    --container-bg: #ffffff;
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
     --button-text: #ffffff;
-    --font-family: 'Arial', sans-serif;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --ruler-color: rgba(255, 255, 0, 0.3);
+    --border-color: #e2e8f0;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Variáveis do Tema Escuro */
 body.dark-theme {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --container-bg: #1e1e1e;
-    --primary-color: #bb86fc;
-    --button-text: #000000;
-    --ruler-color: rgba(255, 255, 255, 0.15);
+    --bg-color: #0f172a;
+    --text-color: #e2e8f0;
+    --container-bg: #1e293b;
+    --primary-color: #8b5cf6;
+    --primary-hover: #7c3aed;
+    --button-text: #ffffff;
+    --ruler-color: rgba(139, 92, 246, 0.25);
+    --border-color: #334155;
 }
 
 /* Variáveis do Tema Sépia */
 body.sepia-theme {
-    --bg-color: #f4ecd8;
-    --text-color: #5b4636;
-    --container-bg: #fdf6e3;
-    --primary-color: #d08c60;
+    --bg-color: #fef3c7;
+    --text-color: #78350f;
+    --container-bg: #fffbeb;
+    --primary-color: #f59e0b;
+    --primary-hover: #d97706;
     --button-text: #ffffff;
-    --ruler-color: rgba(210, 180, 140, 0.4);
+    --ruler-color: rgba(245, 158, 11, 0.3);
+    --border-color: #fcd34d;
 }
 
 /* Estilos Globais e Layout */
@@ -46,67 +58,104 @@ body {
     color: var(--text-color);
     font-family: var(--font-family);
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
     transition: background-color 0.3s ease, color 0.3s ease;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .container {
     background-color: var(--container-bg);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .toolbar {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 30px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 button {
     background-color: var(--primary-color);
     color: var(--button-text);
     border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
+    padding: 14px 20px;
+    border-radius: 12px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 textarea, .output-box {
     width: 100%;
-    height: 150px;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    min-height: 180px;
+    max-height: 400px;
+    padding: 18px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
     background-color: var(--bg-color);
     color: var(--text-color);
     box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.8;
+    resize: vertical;
+    overflow-y: auto;
+    font-family: inherit;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.output-box {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.output-box:empty::before {
+    content: 'Aguardando texto...';
+    color: var(--text-color);
+    opacity: 0.6;
+    font-style: normal;
 }
 
 .btn-principal {
     width: 100%;
-    padding: 15px;
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-/* Ajustes para mobile */
-@media (max-width: 600px) {
-    .toolbar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .container {
-        padding: 15px;
-        width: 95%;
-    }
+    padding: 18px;
+    font-size: 1.15rem;
+    margin-bottom: 25px;
 }
 
 /* Estado da régua visual (Oculta por padrão) */
@@ -115,13 +164,12 @@ textarea, .output-box {
     position: fixed;
     left: 0;
     width: 100%;
-    height: 60px; 
+    height: 70px; 
     
-    /* Gradiente suave*/
     background: linear-gradient(
         to bottom, 
-       transparent 0%, 
-        var (var(--ruler-color)) 50%, 
+        transparent 0%, 
+        var(--ruler-color) 50%, 
         transparent 100%
     );
     
@@ -134,29 +182,32 @@ body.ruler-active .reading-ruler {
     display: block;
 }
 
-/* Responsividade Mobile */
+/* Responsividade */
 @media (max-width: 768px) {
     body {
-        padding: 10px; /* Reduz a margem externa na tela pequena */
+        padding: 20px 10px;
     }
 
     .container {
-        padding: 15px; /* Reduz o espaço interno para dar mais área ao texto */
-        width: 100%;
+        padding: 25px;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
     }
 
     .toolbar {
-        flex-direction: column; /* Quebra a linha e empilha os botões verticalmente */
-        align-items: stretch; /* Estica os botões de ponta a ponta */
-        gap: 12px; /* Aumenta o espaço entre eles para evitar cliques acidentais */
+        flex-direction: column;
+        align-items: stretch;
     }
 
     button {
-        padding: 15px; /* Deixa os botões mais gordinhos (Touch Target ideal) */
+        padding: 16px;
         font-size: 16px;
     }
 
     textarea, .output-box {
-        height: 200px; /* Aumenta a altura para compensar a falta de largura */
+        min-height: 200px;
     }
 }
