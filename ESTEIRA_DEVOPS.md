@@ -12,60 +12,65 @@ flowchart TD
 
     subgraph "🛠️ ETAPA 1: DESENVOLVIMENTO"
         direction TB
-        A[💻 VS Code<br>Escreve código]
-        B[🔄 Git<br>add/commit/push]
+        A["💻 VS Code<br>Escreve código"]
+        B["🔄 Git<br>add/commit/push"]
         A --> B
     end
 
     subgraph "📂 ETAPA 2: REPOSITÓRIO GITHUB"
         direction TB
-        C[🌿 Branch: feature/*<br>Ex: feature/tema-amarelo]
-        D[📥 Pull Request<br>Gatilho: Abrir PR]
-        E[🌿 Branch: MAIN<br>Gatilho: Merge aprovado]
+        C["🌿 Branch: feature/*<br>Ex: feature/tema-amarelo"]
+        D["📥 Pull Request<br>Gatilho: Abrir PR"]
+        E["🌿 Branch: MAIN<br>Gatilho: Merge aprovado"]
         C --> D
         D --> E
     end
 
     subgraph "🤖 ETAPA 3: CI - GITHUB ACTIONS"
         direction TB
-        F[📥 Checkout do Código]
-        G[⚙️ Configurar Node.js 20.x]
-        H[📦 Instalar Dependências npm]
-        I[🔍 Linting<br>Verificar erros de código]
-        J[🧪 Testes Unitários<br>Jest]
-        K[🎭 Testes E2E<br>Playwright]
-        F --> G --> H --> I --> J --> K
+        F["📥 Checkout do Código"]
+        G["⚙️ Configurar Node.js 20.x"]
+        H["📦 Instalar Dependências npm"]
+        I["🔍 Linting<br>Verificar erros de código"]
+        J["🧪 Testes Unitários<br>Jest"]
+        K["🎭 Testes E2E<br>Playwright"]
+        F --> G
+        G --> H
+        H --> I
+        I --> J
+        J --> K
     end
 
     subgraph "🚀 ETAPA 4: CD - DEPLOY VERCEL"
         direction TB
-        L[⚡ Deploy Automático<br>Gatilho: Push/merge em MAIN]
-        M[🌐 Site no Ar!<br>neuroaprende.vercel.app]
+        L["⚡ Deploy Automático<br>Gatilho: Push/merge em MAIN"]
+        M["🌐 Site no Ar!<br>neuroaprende.vercel.app"]
         L --> M
     end
 
     subgraph "📊 ETAPA 5: MONITORAMENTO PRODUÇÃO"
         direction TB
-        N[✅ UptimeRobot<br>Verifica se o site está no ar]
-        O[🐛 Sentry<br>Captura erros do site]
-        P[📈 Vercel Dashboard<br>Métricas de uso]
+        N["✅ UptimeRobot<br>Verifica se o site está no ar"]
+        O["🐛 Sentry<br>Captura erros do site"]
+        P["📈 Vercel Dashboard<br>Métricas de uso"]
     end
 
-    %% Conectando as etapas
+    %% Conectando as etapas (CORRIGIDO!)
     B --> C
     D --> F
-    K -->|✅ Tudo OK!|
+    K --> L1
+    L1["✅ Tudo OK!"]
+    L1 --> E
     E --> L
     M --> N
     M --> O
     M --> P
-    O -->|🔔 Alerta de erro|
-    A
+    O --> A
 
     %% Aplicando estilos
     class A,B dev;
     class C,D,E repo;
-    class F,G,H,I,J,K ci;
+    class F,G,H,I,J,K,L1 ci;
     class L,M cd;
     class N,O,P monitor;
 ```
